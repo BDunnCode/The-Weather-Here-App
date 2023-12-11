@@ -1,0 +1,1 @@
+It's like a yearbook, but with way lower stakes.
