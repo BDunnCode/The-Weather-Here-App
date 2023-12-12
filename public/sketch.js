@@ -2,12 +2,17 @@
 let lat, lon
 if ('geolocation' in navigator) {                                         
       console.log('geolocation available')                                    
-      navigator.geolocation.getCurrentPosition(position => {                                                                                       
+      navigator.geolocation.getCurrentPosition(async position => {                                                                                       
         lat = position.coords.latitude.toFixed(2)                                    
         lon = position.coords.longitude.toFixed(2)                                  
         document.getElementById('latitude').textContent = lat                  
         document.getElementById('longitude').textContent = lon
-
+        const api_url = `/weather`
+        console.log(api_url)
+        const response = await fetch(api_url)
+        console.log(response)
+        const json = await response.json()
+        console.log(json)
 
     })               
 } else {

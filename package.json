@@ -1,7 +1,7 @@
 {
-  "name": "apis-but-also-node",
+  "name": "the-weather-here",
   "version": "1.0.0",
-  "description": "A Whole New Worlddddd",
+  "description": "built from daniel shiffman's version which was built from one by joey lee, each of NYU at the time ",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -10,14 +10,15 @@
     "type": "git",
     "url": "git+https://github.com/BDunnCode/APIs-But-Also-Node.git"
   },
-  "author": "",
-  "license": "ISC",
+  "author": "Brian Dunn",
+  "license": "MIT",
   "bugs": {
     "url": "https://github.com/BDunnCode/APIs-But-Also-Node/issues"
   },
   "homepage": "https://github.com/BDunnCode/APIs-But-Also-Node#readme",
   "dependencies": {
     "express": "^4.18.2",
-    "nedb": "^1.8.0"
+    "nedb": "^1.8.0",
+    "node-fetch": "^3.3.2"
   }
 }
