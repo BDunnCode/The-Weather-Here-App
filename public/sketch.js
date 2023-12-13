@@ -9,12 +9,13 @@ if ('geolocation' in navigator) {
         document.getElementById('longitude').textContent = lon
         // const api_url = `/weather`
         const api_url = `weather/${lat},${lon}`
-        console.log(api_url)
+        // console.log(api_url)
         const response = await fetch(api_url)
-        console.log(response)
+        // console.log(response)
         const json = await response.json()
         console.log(json)
-
+        const fahrenheit = ((json.current.temp - 273.15) * 9/5 + 32).toFixed()
+        document.querySelector('#temp').textContent = fahrenheit
     })               
 } else {
   console.log('geolocation not available')
