@@ -34,5 +34,3 @@ button.addEventListener('click', async event => {
   const json = await response.json()
   console.log(json)
 })
-
-
