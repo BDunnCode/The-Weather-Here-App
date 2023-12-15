@@ -1,0 +1,27 @@
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+#newUI {
+  margin: 200px 0px 100px 30px;
+}
+
+#coords {
+  height: 200px;
+  border: 2px solid black;
+  width: 300px;
+}
+
+#weather-details {
+  height: 200px;
+  border: 2px solid black;
+  width: 300px;
+}
+
+#airquality-details {
+  height: 200px;
+  border: 2px solid black;
+  width: 300px;
+}

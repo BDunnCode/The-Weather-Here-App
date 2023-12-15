@@ -13,14 +13,24 @@
     <a href="/">Check In</a> | <a href="/logs">View Checkins</a>
   </div>
 
-  <p>
-     latitude: <span id="latitude"></span>°</br>
-     longitude: <span id="longitude"></span>°
-  </p>
 
-  <p>
-    temperature: <span id="temp"></span>°F
-  </p>
+  <div id="newUI">
+    <div id="coords">
+      Coordinates: <span id="latitude"></span>°, <span id="longitude"></span>°
+    </div>
+
+    <div id="weather-details">
+      Temperature:  <span id="temp"></span>°F
+
+    </div>
+
+    <div id="airquality-details">
+      
+    </div>
+
+  </div>
+
+
 
   <button id="checkin">Check In</button>
   <script src="sketch.js"></script>
