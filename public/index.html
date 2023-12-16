@@ -4,29 +4,36 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" type="text/css" href="../styles.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&family=Raleway:wght@500&display=swap" rel="stylesheet">
   <title>The Weather Here</title>
 </head>
 <body>
-  <h1>The Weather Here</h1>
+  <div id="card">
 
-  <div>
-    <a href="/">Check In</a> | <a href="/logs">View Checkins</a>
-  </div>
+    <h1>The Weather Here</h1>
 
-  <p>
-     latitude: <span id="latitude"></span>°</br>
-     longitude: <span id="longitude"></span>°
-  </p>
-  <p>
-    Let's check out the weather here. Conditions show <span id="summary"></span> with a temperature of <span id="temp"></span>°F
-  </p>
+    <div>
+      <a href="/">Check In</a> | <a href="/logs">View Checkins</a>
+    </div>
 
-  <p>
-    Now let's check on the air quality. OpenAQ API shows that <span id="value"></span><span id="unit"></span> of <span id="parameter"></span> as of
-    <span id="timestamp"></span>
-  </p>
+    <div id="coords-container">
+        latitude: <span id="latitude"></span>°</br>
+        longitude: <span id="longitude"></span>°
+    </div>
 
-  <button id="checkin">Check In</button>
+    <div id="weather-summary-container">
+        Let's check out the weather here. Conditions show <span id="summary"></span> with a temperature of <span id="temp"></span>°F
+    </div>
+
+    <div id="air-quality-summary-container">
+        Now let's check on the air quality. OpenAQ API shows a reading of <span id="value"></span><span id="unit"></span> 
+        <span class="hideifnoaq">of</span> <span id="parameter"></span> <span class="hideifnoaq">as of</span> <span id="timestamp"></span>
+    </div>
+
+    <button id="checkin">Check In</button>
+  </div>  
   <script src="sketch.js"></script>
 </body>
 </html>

@@ -1,0 +1,35 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&family=Raleway:wght@500&display=swap');
+
+* {
+  margin: 0;
+  border: 0;
+  border-style: border-box;
+  font-family: 'Raleway', sans-serif;
+}
+
+.hide {
+  display: none;
+}
+
+#card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#card * {
+  margin-bottom: 30px;
+}
+
+#weather-summary-container {
+
+}
+
+#air-quality-summary-container {
+}
+
+#checkin {
+  padding: 20px;
+  border: 2px solid black;
+  border-radius: 5px;
+}
