@@ -4,18 +4,25 @@ if ('geolocation' in navigator) {
       console.log('geolocation available')                                    
       navigator.geolocation.getCurrentPosition(async position => {                                                                                       
         lat = position.coords.latitude.toFixed(2)                                    
-        lon = position.coords.longitude.toFixed(2)                                  
+        lon = position.coords.longitude.toFixed(2) 
+        const api_url = `weather/${lat},${lon}`
+        const response = await fetch(api_url)
+        const json = await response.json()
+        const fahrenheit = ((json.weather.current.temp - 273.15) * 9/5 + 32).toFixed()
+        const weather1 = json.weather.current
         document.getElementById('latitude').textContent = lat                  
         document.getElementById('longitude').textContent = lon
-        // const api_url = `/weather`
-        const api_url = `weather/${lat},${lon}`
-        // console.log(api_url)
-        const response = await fetch(api_url)
-        // console.log(response)
-        const json = await response.json()
-        console.log(json)
-        const fahrenheit = ((json.current.temp - 273.15) * 9/5 + 32).toFixed()
         document.querySelector('#temp').textContent = fahrenheit
+        document.querySelector('#summary').textContent = weather1.weather[0].main.toLowerCase()
+        if (json.air_quality.results[0]) {
+          const air_quality1 = json.air_quality                                
+          document.querySelector('#test').textContent = air_quality1.results[0].measurements[0].value
+        } else {
+          document.querySelector('#test').textContent = 
+          'Unfortunately, the air quality measurement tools are unable to find any data for this area.'
+        }
+        console.log(json.air_quality.results[0].measurements[0].value)
+        console.log(json)
     })               
 } else {
   console.log('geolocation not available')

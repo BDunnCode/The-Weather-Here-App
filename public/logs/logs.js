@@ -7,7 +7,7 @@ async function getData() {
   const root = document.createElement('div')
   const geo = document.createElement('div')
   
-  quote.innerText = `random text: ${item.quote}`
+  // quote.innerText = `random text: ${item.quote}`
   geo.textContent = `${item.lat}°, ${item.lon}°`
   
   root.append(geo) // 
