@@ -36,7 +36,7 @@ if ('geolocation' in navigator) {
           document.querySelector('#parameter').textContent = air_quality1.results[0].measurements[0].parameter
           document.querySelector('#timestamp').textContent = formattedtimedateforhumans
         } else {
-          document.querySelector('#value').textContent = `"No Satellite Data Found". Unfortunately, the air quality measurement tools are unable to find any data for this area.`
+          document.querySelector('#value').textContent = `"No Satellite Data Found". Unfortunately, the measurement tools are unable to find any air quality data for this area. You can consult the about page for more information.`
           const spansToHide = document.querySelectorAll('.hideifnoaq')
           console.log(spansToHide)
           spansToHide.forEach((spanElement) => {

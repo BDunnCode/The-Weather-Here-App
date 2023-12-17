@@ -11,7 +11,13 @@
   display: none;
 }
 
-#card {
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#card { 
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -19,13 +25,15 @@
 
 #card * {
   margin-bottom: 30px;
+  max-width: 650px;
 }
 
 #weather-summary-container {
-
+  
 }
 
 #air-quality-summary-container {
+
 }
 
 #checkin {

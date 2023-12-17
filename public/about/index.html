@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" type="text/css" href="../styles.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&family=Raleway:wght@500&display=swap" rel="stylesheet">
+  <title>The Weather Here</title>
+</head>
+<body>
+  <div id="card">
+
+    <h1>The Weather Here</h1>
+
+    <div>
+      <a href="/">Check In</a> | <a href="/logs">View Checkins</a> | <a href="/about">About</a>
+    </div>
+
+    <div>
+      <p>
+        Hi there! Welcome to <i>The Weather Here App</i>. 
+      </p>
+
+      <p>
+        As of December 16th, 2023 weather and air quality data are obtained via <i>OpenWeatherMap.org</i> and <i>OpenAQ.org</i>
+        APIs, respectively.
+      </p>
+
+      <p>
+        First and foremost, you may have received a message of "No Satellite Data Found" or, occasionally, a temperature readout 
+        in the air quality section on the Check-In page. 
+
+        For "No Satellite Data Found", this isn't so much a technical error as the Air Quality API simply doesn't have any data within the 
+        geological radius of the latitude and longitude provided. Some areas, have an abundance of air quality data while others have
+        none.
+
+        Occasionally, you may see measurements of temperature rather than air conditions. The OpenAQ API doesn't necessarily return the 
+        same types of measurements each time (NO2, ppm, and others will show for air quality), and will occasionally include temperature
+        measurements. This may be compensated for in the future.
+
+        The significance of the measurements such as NO2, ppm2.5, and others is dependent on specific quantity levels. Certain amounts
+        may lead to discomfort or breathing issues in specific individuals.
+      </p>
+
+      <p>
+        This is project based on a series of 2019 tutorials from Daniel Schiffman's <i>The Coding Train</i> YouTube channel. 
+        That project itself was actually based on yet another project, created by one of his NYU colleagues, Joey Lee.
+
+        It was originally meant to be a simple dive into the world of APIs and databases and quickly became much more an exercise 
+        in compensating for and managing changed or deprecated technologies.
+      </p>
+    </div>
+
+  </div>  
+</body>
+</html>
