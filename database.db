@@ -1,13 +1,1 @@
-{"lat":"41.75","lon":"-87.85","_id":"1RKk5tlH84ECHFM7"}
-{"lat":"51.51","lon":"-0.13","_id":"BjqdpMfDNi42NvXv"}
-{"lat":"41.75","lon":"-87.85","_id":"Dt4QZ54q5L8lDVpc"}
-{"lat":"41.75","lon":"-87.86","_id":"HL7dkk2eGM8Ukvgx"}
-{"lat":"41.75","lon":"-87.85","_id":"JGg7tU5EDz8MOilK"}
-{"lat":"41.75","lon":"-87.85","_id":"QMnE7bS0GyUQud9S"}
-{"lat":"41.75","lon":"-87.85","_id":"VfcSKH8jyH76rlIM"}
-{"lat":"52.52","lon":"13.40","_id":"W7E3jkjNDNWMphEs"}
-{"lat":"41.75","lon":"-87.86","_id":"h78khGdYSAcUPWFE"}
-{"lat":"41.75","lon":"-87.85","_id":"mGYPVWgBgMBTA2JC"}
-{"lat":"41.75","lon":"-87.85","_id":"mLmIQTtIjjS1KUQa"}
-{"lat":"41.75","lon":"-87.85","_id":"sUuuvl8RJNeN8YpK"}
-{"lat":"41.75","lon":"-87.85","_id":"sg1IKDOVlCnkwflB"}
+{"lat":"37.39","lon":"-122.08","weather":{"dt":1702840630,"sunrise":1702826203,"sunset":1702860729,"temp":286.08,"feels_like":285.49,"pressure":1017,"humidity":79,"dew_point":282.53,"uvi":1.14,"clouds":75,"visibility":10000,"wind_speed":1.54,"wind_deg":100,"weather":[{"id":803,"main":"Clouds","description":"broken clouds","icon":"04d"}]},"air":{"parameter":"pm1","value":20.2,"lastUpdated":"2023-12-17T19:02:31+00:00","unit":"µg/m³"},"_id":"cziTGOSaOgpqLRjt"}
