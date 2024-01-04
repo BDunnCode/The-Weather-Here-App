@@ -1,5 +1,5 @@
 // Geo Locate
-let lat, lon, air, weather
+let lat, lon, measurementObject, weather, currentWeather
 if ('geolocation' in navigator) {                                         
       console.log('geolocation available')                                    
       navigator.geolocation.getCurrentPosition(async position => {                                                                                       
@@ -8,34 +8,57 @@ if ('geolocation' in navigator) {
         const api_url = `weather/${lat},${lon}`
         const response = await fetch(api_url)
         const json = await response.json()
+        console.log('this is from line 12')
         console.log(json)
-        const fahrenheit = ((json.weather.current.temp - 273.15) * 9/5 + 32).toFixed()
-        weather = json.weather.current
+        weather = json.weather_api_response
+        currentWeather = weather.current
+        const fahrenheit = ((currentWeather.temp - 273.15) * 9/5 + 32).toFixed()
         document.getElementById('latitude').textContent = lat                  
         document.getElementById('longitude').textContent = lon
         document.querySelector('#temp').textContent = fahrenheit
-        document.querySelector('#summary').textContent = weather.weather[0].main.toLowerCase()
-        if (json.air_quality.results[0]) {
-          air = json.air_quality.results[0].measurements[0]
-           // Date Translation Code
-          const timestampforcomputers = json.air_quality.results[0].measurements[0].lastUpdated
-          const timestampmidtranslation = new Date(timestampforcomputers)
-          const dateconfig = {
-            year: 'numeric',
-            month: 'long',
-            day: 'numeric', 
-            hour: 'numeric', 
-            minute: 'numeric', 
-            second: 'numeric', 
-            timeZoneName: 'short' 
+        document.querySelector('#summary').textContent = currentWeather.weather[0].main.toLowerCase()
+        if (json.aq_api_response.results[0]) {
+          measurementObject = json.aq_api_response.results[0].measurements[0]
+
+
+          // Do not assume measurements exist, check to see if there are any. 
+          json.aq_api_response.results[0].measurements.forEach(measurement => {
+            
+            // pm25 represents the concentration of specific kinds of particulate matter in the air
+            if (measurement.parameter == "pm25") { 
+
+              foundObject = measurement
+            }
+          })
+
+          if (foundObject != null) {
+            // PM25 MEASUREMENT IS FOUND, DISPLAY RESULTS. 
+                       
+            // Date Translation Code. This takes the ugly computational looking date timestamp and converts into a more
+            // reader-friendly syntax.
+
+            const unformattedTimestamp = foundObject.lastUpdated
+            const timestampMidTranslation = new Date(unformattedTimestamp)
+            const dateconfig = {
+              year: 'numeric',
+              month: 'long',
+              day: 'numeric', 
+              hour: 'numeric', 
+              minute: 'numeric', 
+              second: 'numeric', 
+              timeZoneName: 'short' 
+            }
+            const formattedTimestamp = new Intl.DateTimeFormat('en-US', dateconfig).format(timestampMidTranslation)
+            console.log(formattedTimestamp) 
+
+            document.querySelector('#value').textContent = foundObject.value
+            document.querySelector('#unit').textContent = foundObject.unit
+            document.querySelector('#parameter').textContent = "pm25"
+            document.querySelector('#timestamp').textContent = formattedTimestamp
+
           }
-        const formattedtimedateforhumans = new Intl.DateTimeFormat('en-US', dateconfig).format(timestampmidtranslation)
-        console.log(formattedtimedateforhumans)                                
-          document.querySelector('#value').textContent = json.air_quality.results[0].measurements[0].value
-          document.querySelector('#unit').textContent = json.air_quality.results[0].measurements[0].unit
-          document.querySelector('#parameter').textContent = json.air_quality.results[0].measurements[0].parameter
-          document.querySelector('#timestamp').textContent = formattedtimedateforhumans
         } else {
+          // NO PM25 / DUST CONCENTRATION MEASUREMENT IS FOUND, SHOW ERROR 
           document.querySelector('#value').textContent = `"No Satellite Data Found". Unfortunately, the measurement tools are unable to find any air quality data for this area. You can consult the about page for more information.`
           const spansToHide = document.querySelectorAll('.hideifnoaq')
           console.log(spansToHide)
@@ -44,7 +67,6 @@ if ('geolocation' in navigator) {
               spanElement.classList.add('hide')
             }
           })
-
         }
     })               
 } else {
@@ -55,8 +77,9 @@ if ('geolocation' in navigator) {
 // Handle button presses, submit data to database
 const button = document.getElementById('checkin')
 button.addEventListener('click', async event => {
-  console.log(lat, lon, weather, air)
-  const data = { lat, lon, weather, air }
+  console.log(lat, lon, weather, measurementObject)
+  const data = { lat, lon, weather, measurementObject }
+  console.log(data)
   const options = {
     method: "POST",
     headers: {

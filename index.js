@@ -15,34 +15,37 @@ database.loadDatabase()
 app.get('/api', (request, response) => {
   database.find({},(err, data) => {
       if (err) {
+        console.log('error')
         response.end()
         return
       }
+      console.log('success get')
       response.json(data)
   })
 })
 
 
-// This route posts to the client?
+
 
 app.post('/api', (request, response) => {
   const data = request.body
-  database.insert(data)
+  database.insert(data, (err, data) => {
+    if(err) {
+      console.log('post Error')
+      response.end()
+      return
+    }
+  })
+
   response.json(data)
+  console.log('no errors on post')
 })
 
-// I believe this route gets information from the client
-  // No, it should be a get request towards the API_URL, so from the weather API.
-    // It's definitely an endpoint that allows the client side to get a weather object using an HTTP get request. I'm fairly 
-    // sure about that, but I think it does other things. It's like when someone on an approved client side makes a get request
-    // to this endpoint, it will prompt a function that makes a get request to the weather API, which is captures inside of fetch
-    // response, and then sends that fetch response over to original maker of the get request in the first place. This is poorly
-    // worded, but fairly correct.
-    
-      // After that portion comes parameters being added in the routing which is what's going to allow for, at least in this case,
-      // variables to be passed along via those HTTP requests as far as I can tell. The latitude and longitude pulled from the 
-      // geolocation tool inside of the index should get send along with the get request, giving a dynamic latitude and longitude
-      // that will then be sent over to the open weather API, allowing the weather to be passed to the client side.
+
+// Seems like this is missing error handling.
+
+// I believe this route allows the client side to make a get request to the server, and then the server makes a call to the 
+// two different weather APIs on the client side's behalf.
 
 app.get('/weather/:latlon', async (request, response) => {
   console.log(request.params)
@@ -60,8 +63,8 @@ app.get('/weather/:latlon', async (request, response) => {
   const aq_data = await aq_response.json()
 
   const data = {
-    weather: weather_data,
-    air_quality: aq_data
+    weather_api_response: weather_data,
+    aq_api_response: aq_data
   }
 
 
