@@ -1,5 +1,5 @@
 // Geo Locate
-let lat, lon, measurementObject, weather, currentWeather
+let lat, lon, measurementObject, weather, currentWeather, tempInFahrenheit, briefWeatherSummary, foundObject
 if ('geolocation' in navigator) {                                         
       console.log('geolocation available')                                    
       navigator.geolocation.getCurrentPosition(async position => {                                                                                       
@@ -12,12 +12,17 @@ if ('geolocation' in navigator) {
         console.log(json)
         weather = json.weather_api_response
         currentWeather = weather.current
-        const fahrenheit = ((currentWeather.temp - 273.15) * 9/5 + 32).toFixed()
+        tempInFahrenheit = ((currentWeather.temp - 273.15) * 9/5 + 32).toFixed()
+        briefWeatherSummary = currentWeather.weather[0].main.toLowerCase()
+        console.log(tempInFahrenheit)
+        console.log(briefWeatherSummary)
         document.getElementById('latitude').textContent = lat                  
         document.getElementById('longitude').textContent = lon
-        document.querySelector('#temp').textContent = fahrenheit
+        document.querySelector('#temp').textContent = tempInFahrenheit
         document.querySelector('#summary').textContent = currentWeather.weather[0].main.toLowerCase()
         if (json.aq_api_response.results[0]) {
+
+          // I'm not sure the below line needs to exist at all.. The above basically checks for a good AQ_API response, though.
           measurementObject = json.aq_api_response.results[0].measurements[0]
 
 
@@ -28,6 +33,7 @@ if ('geolocation' in navigator) {
             if (measurement.parameter == "pm25") { 
 
               foundObject = measurement
+              console.log(foundObject)
             }
           })
 
@@ -74,11 +80,12 @@ if ('geolocation' in navigator) {
 }
 
 
+
 // Handle button presses, submit data to database
 const button = document.getElementById('checkin')
 button.addEventListener('click', async event => {
-  console.log(lat, lon, weather, measurementObject)
-  const data = { lat, lon, weather, measurementObject }
+  console.log(lat, lon, tempInFahrenheit, briefWeatherSummary, foundObject)
+  const data = { lat, lon, tempInFahrenheit, briefWeatherSummary, foundObject }
   console.log(data)
   const options = {
     method: "POST",
