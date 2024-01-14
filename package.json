@@ -1,7 +1,7 @@
 {
   "name": "the-weather-here",
   "version": "1.0.0",
-  "description": "built from daniel shiffman's version which was built from one by joey lee, each of NYU at the time ",
+  "description": "Joey Lee built a project. Then Daniel Shiffman used that project. Then I built on it and worked through deprecations.",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
