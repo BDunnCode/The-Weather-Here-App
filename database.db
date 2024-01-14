@@ -7,6 +7,6 @@
 {"lat":"55.76","lon":"37.62","tempInFahrenheit":"-12","briefWeatherSummary":"clear","_id":"OHKQhAPH9o9tLckS"}
 {"lat":"35.69","lon":"139.69","tempInFahrenheit":"48","briefWeatherSummary":"clouds","_id":"crQ5p6bU8nQdrSf2"}
 {"lat":"52.52","lon":"13.40","tempInFahrenheit":"34","briefWeatherSummary":"mist","_id":"jt9hXs8QEuWHrWKp"}
-{"lat":"31.23","lon":"121.47","tempInFahrenheit":"46","briefWeatherSummary":"clear","_id":"rLR02137RaSVtl5x"}
-{"lat":"39.74","lon":"-104.99","tempInFahrenheit":"30","briefWeatherSummary":"clouds","foundObject":{"parameter":"pm25","value":0.2,"lastUpdated":"2023-10-09T19:25:02+00:00","unit":"µg/m³"},"_id":"rGyReQCmeh5x7rRG"}
 {"lat":"40.76","lon":"-111.89","tempInFahrenheit":"25","briefWeatherSummary":"clouds","foundObject":{"parameter":"pm25","value":3,"lastUpdated":"2022-08-24T23:54:53+00:00","unit":"µg/m³"},"_id":"oRGRiX5bWBiNnnoI"}
+{"lat":"39.74","lon":"-104.99","tempInFahrenheit":"30","briefWeatherSummary":"clouds","foundObject":{"parameter":"pm25","value":0.2,"lastUpdated":"2023-10-09T19:25:02+00:00","unit":"µg/m³"},"_id":"rGyReQCmeh5x7rRG"}
+{"lat":"31.23","lon":"121.47","tempInFahrenheit":"46","briefWeatherSummary":"clear","_id":"rLR02137RaSVtl5x"}
