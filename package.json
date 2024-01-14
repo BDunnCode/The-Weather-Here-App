@@ -4,6 +4,7 @@
   "description": "Joey Lee built a project. Then Daniel Shiffman used that project. Then I built on it and worked through deprecations.",
   "main": "index.js",
   "scripts": {
+    "start": "node index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
