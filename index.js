@@ -4,10 +4,10 @@ const Datastore = require('nedb')
 require('dotenv').config()
 console.log(process.env)
 const app = express()
-const PORT = 3000
+const port = process.env.PORT || 3000
 app.use(express.static('public'))
 app.use(express.json({limit: '1mb'}))
-app.listen(PORT, () => console.log(`listening at http://localhost:${PORT}`))
+app.listen(port, () => console.log(`listening at ${port}`))
 
 
 const database = new Datastore('database.db')
