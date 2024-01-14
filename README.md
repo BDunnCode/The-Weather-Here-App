@@ -1,1 +1,1 @@
-It's like a yearbook, but with way lower stakes.
+How's the weather up there?

@@ -15,30 +15,59 @@ database.loadDatabase()
 app.get('/api', (request, response) => {
   database.find({},(err, data) => {
       if (err) {
+        console.log('error')
         response.end()
         return
       }
+      console.log('success get')
       response.json(data)
   })
 })
 
 
-// This route posts to the client?
+
 
 app.post('/api', (request, response) => {
   const data = request.body
-  database.insert(data)
+  database.insert(data, (err, data) => {
+    if(err) {
+      console.log('post Error')
+      response.end()
+      return
+    }
+  })
+
   response.json(data)
+  console.log('no errors on post')
 })
 
-// I believe this route gets information from the client
-  // No, it should be a get request towards the API_URL, so from the weather API.
 
-app.get('/weather/', async (request, response) => {
-  // const api_url = `https://api.openweathermap.org/data/3.0/onecall?lat=${lat}&lon=${lon}&appid=${api_Key}`
-  const api_url = `https://api.openweathermap.org/data/3.0/onecall?lat=33.44&lon=94.04&appid=b6254fd4b457e5aa978aa18673562b99`
-  const fetch_response = await fetch(api_url)
-  const json = await fetch_response.json()
-  response.json(json)
+// Seems like this is missing error handling.
+
+// I believe this route allows the client side to make a get request to the server, and then the server makes a call to the 
+// two different weather APIs on the client side's behalf.
+
+app.get('/weather/:latlon', async (request, response) => {
+  console.log(request.params)
+  const latlon = request.params.latlon.split(',')
+  console.log(latlon)
+  const lat = latlon[0]
+  const lon = latlon[1]
+  console.log(lat, lon)
+  const weather_url = `https://api.openweathermap.org/data/3.0/onecall?lat=${lat}&lon=${lon}&appid=b6254fd4b457e5aa978aa18673562b99`
+  const weather_response = await fetch(weather_url)
+  const weather_data = await weather_response.json()
+
+  const aq_url = `https://api.openaq.org/v2/latest?coordinates=${lat},${lon}`
+  const aq_response = await fetch(aq_url)
+  const aq_data = await aq_response.json()
+
+  const data = {
+    weather_api_response: weather_data,
+    aq_api_response: aq_data
+  }
+
+
+  response.json(data)
 })
 
